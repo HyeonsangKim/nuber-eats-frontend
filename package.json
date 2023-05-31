@@ -2,7 +2,12 @@
   "name": "nuber-eats-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
+    "@apollo/client": "^3.7.14",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -10,17 +15,28 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "apollo": "^2.34.0",
+    "autoprefixer": "^10.4.14",
+    "graphql": "^16.6.0",
+    "postcss": "^8.4.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.44.2",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "5.0.1",
+    "rimraf": "^5.0.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "tailwind:build": "npx tailwindcss-cli@latest build -i src/styles/tailwind.css -o src/styles/styles.css",
     "start": "react-scripts start",
+    "apollo:codegen": " rimraf src/__generated__ && apollo client:codegen src/__generated__ --target=typescript --outputFlat",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate": "graphql-codegen"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +55,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@graphql-codegen/typescript": "^4.0.0",
+    "@graphql-codegen/typescript-operations": "^4.0.0",
+    "@types/react-helmet": "^6.1.6"
+  },
+  "overrides": {
+    "@apollo/client": {
+      "react": "$react"
+    },
+    "@apollographql/graphql-language-service-interface": {
+      "graphql": "$graphql"
+    },
+    "@apollographql/graphql-language-service-parser": {
+      "graphql": "$graphql"
+    },
+    "@apollographql/graphql-language-service-types": {
+      "graphql": "$graphql"
+    },
+    "@apollographql/graphql-language-service-utils": {
+      "graphql": "$graphql"
+    }
   }
 }
